@@ -12,7 +12,7 @@ class CreateClubsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('clubs', function(Blueprint $table)
+		Schema::create('clubs', function(Blueprint $table)
 		{
             $table->increments('id');
             $table->string('name');
@@ -36,7 +36,7 @@ class CreateClubsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('damclubs', function(Blueprint $table)
+		Schema::table('clubs', function(Blueprint $table)
 		{
 			//
 		});
