@@ -1,16 +1,16 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
 
-use Illuminate\Http\Request;
 
 class ClubController extends Controller {
 
 	/**
-	 * Display a listing of the resource.
+	 * Displays all clubs
+     * Fetch all clubs using the Club-model. Return a JSON-response.
 	 *
 	 * @return Response
 	 */
@@ -47,14 +47,21 @@ class ClubController extends Controller {
 	}
 
 	/**
-	 * Display the specified resource.
+	 * Displays a single club
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function show($id)
 	{
-		//
+		$club = Club::find($id);
+
+        $result = array(
+            'error' => false,
+            'clubs' => $club->toArray()
+        );
+
+        return Response::json($result, 200) ->setCallback(Input::get('callback'));
 	}
 
 	/**
