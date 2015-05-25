@@ -43,7 +43,31 @@ class ClubController extends Controller {
 	 */
 	public function store()
 	{
-		//
+		$club = new Club;
+        $club->name = Request::get('name');
+        $club->address = Request::get('address');
+        $club->phone_number = Request::get('phone_number');
+        $club->email = Request::get('email');
+        $club->zipcode = Request::get('zipcode');
+        $club->city = Request::get('city');
+        $club->state = Request::get('state');
+        $club->latitude = Request::get('latitude');
+        $club->longitude = Request::get('longitude');
+        $club->user_id = Auth::user()->id;
+
+        if ( $club->save() ) {
+            return Response::json(array(
+                'error' => false,
+                'message' => 'Club is created successfully.',
+                200
+            )->setCallBack(Input::get('callback'));
+        } else {
+            return Response::json(array(
+                'error' => true,
+                'message' => 'Problem creating club.'),
+                200
+            )->setCallBack(Input::get('callback'));
+        }
 	}
 
 	/**
