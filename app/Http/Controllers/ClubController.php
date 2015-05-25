@@ -1,6 +1,8 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use Illuminate\Http\Response;
+use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
@@ -14,7 +16,14 @@ class ClubController extends Controller {
 	 */
 	public function index()
 	{
-		//
+		$clubs = Club::all();
+
+        $result = array(
+            'error' => false,
+            'clubs' => $clubs->toArray()
+        );
+
+        return Response::json($result, 200) ->setCallback(Input::get('callback'));
 	}
 
 	/**
