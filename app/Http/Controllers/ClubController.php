@@ -5,7 +5,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
-class DamclubController extends Controller {
+class ClubController extends Controller {
 
 	/**
 	 * Display a listing of the resource.

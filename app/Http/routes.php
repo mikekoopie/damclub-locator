@@ -20,4 +20,4 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
-Route::resource('damclub', 'DamclubController');
+Route::resource('club', 'ClubController');
